@@ -1,0 +1,20 @@
+version: '3'
+services:
+  magento2:
+    build:
+      context: ./
+      dockerfile: ./web_server/Dockerfile
+    container_name: magento
+    ports:
+      - "80:80"
+
+  mysql:
+    image: mysql:5.7
+    environment: 
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin123"
+      MYSQL_DATABASE: "magento2"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    container_name: mysql
+    ports:
+      - "3306:3306"
